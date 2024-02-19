@@ -1,6 +1,4 @@
 class FieldCleaner:
-    def tipo(value):
-        pass
 
     def cnpj_cpf(value):
         cleaned_value = str(int(value))
@@ -86,7 +84,3 @@ class FieldCleaner:
         if not value:
             value = " " * 10
         return str(value)
-
-
-def get_header():
-    return "DIMOB" + FieldCleaner.reserved(369)

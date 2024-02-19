@@ -1,5 +1,4 @@
 from dimob_xlsx_txt.utils import FieldCleaner as clean
-from dimob_xlsx_txt.utils import get_header
 
 
 def test_cnpj_cpf_with_less_than_11_chars():
@@ -60,11 +59,6 @@ def test_real_estate_address_with_60_chars():
     str_input = "           essa string possui sessenta caracteres           "
     str_output = "           essa string possui sessenta caracteres           "
     assert clean.real_estate_address(str_input) == str_output
-
-
-def test_get_header():
-    output = "DIMOB" + (" " * 369)
-    assert get_header() == output
 
 
 def test_rectifying_statement_no_value():
