@@ -1,6 +1,11 @@
+import re
+
+
 class FieldCleaner:
 
     def cnpj_cpf(value):
+        if type(value) == str:
+            value = clean_string(value)
         cleaned_value = str(int(value))
         if len(cleaned_value) <= 11:
             prefix = (11 - len(cleaned_value)) * "0"
@@ -66,6 +71,11 @@ class FieldCleaner:
         return cleaned_value
 
     def cep(value):
+        value = str(int(value))
+        value = clean_string(value)
+        if len(value) < 8:
+            prefix = (8 - len(value)) * "0"
+            value = prefix + value
         return str(int(value))
 
     def city_code(value):
@@ -84,3 +94,12 @@ class FieldCleaner:
         if not value:
             value = " " * 10
         return str(value)
+
+
+def clean_string(input_string):
+    cleaned_string = re.sub(r"[^0-9]", "", input_string)
+    return cleaned_string
+
+
+# if __name__ == "__main__":
+#     FieldCleaner.cep(5412002.0)

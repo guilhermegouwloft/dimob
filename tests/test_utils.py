@@ -1,4 +1,5 @@
 from dimob_xlsx_txt.utils import FieldCleaner as clean
+from dimob_xlsx_txt.utils import clean_string
 
 
 def test_cnpj_cpf_with_less_than_11_chars():
@@ -61,6 +62,10 @@ def test_real_estate_address_with_60_chars():
     assert clean.real_estate_address(str_input) == str_output
 
 
+def test_cep_with_less_than_8_chars():
+    assert clean.cep(5412002) == "05412002"
+
+
 def test_rectifying_statement_no_value():
     assert clean.rectifying_statement("") == "0"
 
@@ -77,3 +82,8 @@ def test_receipt_number_no_value():
 def test_receipt_number_with_value():
     output = "1234567890"
     assert clean.receipt_number(1234567890) == output
+
+
+def test_clean_string():
+    input_string = "123-456.789/0"
+    assert clean_string(input_string) == "1234567890"

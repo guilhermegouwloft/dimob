@@ -3,11 +3,11 @@ from openpyxl import load_workbook
 from utils import FieldCleaner as clean
 
 
-workbook = load_workbook(filename="files/dimob_jan_2023.xlsx")
+workbook = load_workbook(filename="files/DIMOB-CEP-TESTE.xlsx")
 sheet = workbook["Planilha1"]
 
-with open("reports/foxter_output.txt", "a") as file:
-    for i in range(4, 151):
+with open("reports/foxter_output_2.txt", "a") as file:
+    for i in range(2, 4):
         current_row = sheet[i]
 
         fields = {
